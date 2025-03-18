@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "CloudFormation Template to create an S3 bucket"
+
+Parameters:
+  BucketName:
+    Type: String
+    Description: "Enter the name of the S3 bucket"
+
+  VersioningEnabled:
+    Type: String
+    AllowedValues: ["Enabled", "Suspended"]
+    Default: "Enabled"
+    Description: "Enable or disable S3 versioning"
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub 'my-unique-bucket-${AWS::AccountId}-${AWS::Region}'
+      VersioningConfiguration:
+        Status: Enabled
+
+
+Outputs:
+  BucketName:
+    Description: "Name of the created S3 bucket"
+    Value: !Ref S3Bucket
