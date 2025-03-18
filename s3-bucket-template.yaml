@@ -25,4 +25,4 @@ Resources:
 Outputs:
   BucketName:
     Description: The name of the created S3 bucket
-    Value: !Ref Parameters
+    Value: !Ref BucketName
